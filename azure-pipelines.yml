@@ -8,6 +8,12 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+strategy:
+  matrix:
+    node_8_x:
+      node_version: 8.x
+    node_9_x:
+      node_version: 9.x
 
 steps:
 - task: NodeTool@0
@@ -21,7 +27,7 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    echo "blaat" > blaat.txt
+    node --version > blaat.txt
   displayName: 'Create blaat'
 
 - task: CopyFiles@2
